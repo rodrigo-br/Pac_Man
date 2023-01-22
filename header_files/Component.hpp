@@ -13,6 +13,7 @@ class Component
 /*******************************************************************************
  * 				MEMBER FUNCTIONS								 				   *
  ******************************************************************************/
+	public:
 		virtual void	update(float deltaTime);
 		int				getUpdateOrder() const;
 
@@ -22,7 +23,6 @@ class Component
 	protected:
 		class Actor*	_owner;
 		int				_updateOrder;
-
 };
 
 #endif
