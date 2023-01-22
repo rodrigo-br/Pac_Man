@@ -42,9 +42,9 @@ class Actor
 		void			removeComponent(class Component* component);
 
 /*******************************************************************************
- * 				PRIVATE MEMBERS								 				   *
+ * 				PROTECTED MEMBERS							 				   *
  ******************************************************************************/
-	private:
+	protected:
 		State							_state;
 		Vec2							_position;
 		float							_scale;

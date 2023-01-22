@@ -11,14 +11,14 @@ class Component
 		virtual ~Component();
 
 /*******************************************************************************
- * 				MEMBER FUNCTIONS								 				   *
+ * 				MEMBER FUNCTIONS							 				   *
  ******************************************************************************/
 	public:
 		virtual void	update(float deltaTime);
 		int				getUpdateOrder() const;
 
 /*******************************************************************************
- * 				PRIVATE MEMBERS								 				   *
+ * 				PROTECTED MEMBERS							 				   *
  ******************************************************************************/
 	protected:
 		class Actor*	_owner;

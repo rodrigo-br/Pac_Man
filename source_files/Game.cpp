@@ -16,7 +16,7 @@ float Game::updateDeltaTime()
 	return deltaTime;
 };
 
-void deleteDeadActors(std::vector<Actor*>& actors)
+static void deleteDeadActors(std::vector<Actor*>& actors)
 {
 	std::vector<Actor *> deadActors;
 
@@ -33,7 +33,7 @@ void deleteDeadActors(std::vector<Actor*>& actors)
 	}
 };
 
-void updatingActorsCaller(std::vector<Actor*>& actors, float deltaTime, bool &updating)
+static void updatingActorsCaller(std::vector<Actor*>& actors, float deltaTime, bool &updating)
 {
 	updating = true;
 	for (auto actor : actors)
@@ -43,7 +43,7 @@ void updatingActorsCaller(std::vector<Actor*>& actors, float deltaTime, bool &up
 	updating = false;
 };
 
-void updatingPendingActorsCaller(std::vector<Actor*>& actors, std::vector<Actor*>&pending)
+static void updatingPendingActorsCaller(std::vector<Actor*>& actors, std::vector<Actor*>&pending)
 {
 	for (auto actor : pending)
 	{
@@ -73,7 +73,7 @@ void Game::addActor(Actor* actor)
 	}
 };
 
-void find_and_pop(Actor* actor, std::vector<Actor*>& actors)
+static void find_and_pop(Actor* actor, std::vector<Actor*>& actors)
 {
 	auto iter = std::find(actors.begin(), actors.end(), actor);
 
@@ -89,3 +89,11 @@ void Game::removeActor(Actor* actor)
 	find_and_pop(actor, this->actors);
 	find_and_pop(actor, this->pendingActors);
 };
+
+void Game::shutdown()
+{
+	while (!this->actors.empty())
+	{
+		delete this->actors.back();
+	}
+}

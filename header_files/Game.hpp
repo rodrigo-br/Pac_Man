@@ -9,8 +9,10 @@
 
 class Game
 {
+/*******************************************************************************
+ * 					PRIVATE MEMBER VARIABLES								   *
+ ******************************************************************************/
 	private:
-
 		SDL_Window					*window;
 		SDL_Renderer				*renderer;
 		bool						running;
@@ -19,18 +21,27 @@ class Game
 		std::vector<class Actor*>	actors;
 		std::vector<class Actor*>	pendingActors;
 
+/*******************************************************************************
+ * 					CONSTRUCTOR AND DESTRUCTOR								   *
+ ******************************************************************************/
 	public:
-
 		Game();
 
+/*******************************************************************************
+ * 					PUBLIC MEMBER FUNCTIONS									   *
+ ******************************************************************************/
+	public:
 		bool initialize();
 		void runLoop();
 		void shutdown();
 		void addActor(class Actor* actor);
 		void removeActor(class Actor* actor);
 
-	private:
 
+/*******************************************************************************
+ * 					PRIVATE MEMBER FUNCTIONS								   *
+ ******************************************************************************/
+	private:
 		void		processInput();
 		void		updateGame();
 		void		generateOutput();
