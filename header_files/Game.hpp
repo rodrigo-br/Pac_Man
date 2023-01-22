@@ -34,6 +34,7 @@ class Game
 		void		processInput();
 		void		updateGame();
 		void		generateOutput();
+		float		updateDeltaTime();
 };
 
 
