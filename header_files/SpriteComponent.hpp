@@ -1,6 +1,7 @@
 #ifndef SPRITECOMPONENT_HPP
 # define SPRITECOMPONENT_HPP
 
+# include "Game.hpp"
 # include "Component.hpp"
 
 class SpriteComponent : public Component

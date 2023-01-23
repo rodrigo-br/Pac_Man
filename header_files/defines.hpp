@@ -2,6 +2,7 @@
 # define DEFINES_HPP
 
 # include <algorithm>
+# include <cmath>
 
 typedef struct Vector2 {
 	float x;
