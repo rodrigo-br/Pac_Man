@@ -106,6 +106,49 @@ void Game::addActor(Actor* actor)
 	}
 };
 
+void Game::addSprite(class SpriteComponent* sprite)
+{
+	int myDrawOrder = sprite->getDrawOrder();
+	auto iter = this->sprites.begin();
+	for (; iter != this->sprites.end(); ++iter)
+	{
+		if (myDrawOrder < (*iter)->getDrawOrder())
+		{
+			break;
+		}
+	}
+	this->sprites.insert(iter, sprite);
+}
+
+static void clearOutput(SDL_Renderer *renderer)
+{
+	if (SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255) != 0)
+	{
+		SDL_Log("Failed to set renderer color: %s", SDL_GetError());
+	}
+	if (SDL_RenderClear(renderer) != 0)
+	{
+		SDL_Log("Failed to clear renderer: %s", SDL_GetError());
+	}
+};
+
+static void drawSpritesCaller(std::vector<SpriteComponent*>& sprites, SDL_Renderer *renderer)
+{
+	for (auto sprite : sprites)
+	{
+		sprite->draw(renderer);
+	}
+};
+
+void Game::generateOutput()
+{
+	clearOutput(this->renderer);
+
+	drawSpritesCaller(this->sprites, this->renderer);
+
+	SDL_RenderPresent(this->renderer);
+};
+
 static void find_and_pop(Actor* actor, std::vector<Actor*>& actors)
 {
 	auto iter = std::find(actors.begin(), actors.end(), actor);

@@ -14,13 +14,14 @@ class Game
  * 					PRIVATE MEMBER VARIABLES								   *
  ******************************************************************************/
 	private:
-		SDL_Window					*window;
-		SDL_Renderer				*renderer;
-		bool						running;
-		Uint32						ticksCount;
-		bool						updatingActors;
-		std::vector<class Actor*>	actors;
-		std::vector<class Actor*>	pendingActors;
+		SDL_Window							*window;
+		SDL_Renderer						*renderer;
+		bool								running;
+		Uint32								ticksCount;
+		bool								updatingActors;
+		std::vector<class Actor*>			actors;
+		std::vector<class Actor*>			pendingActors;
+		std::vector<class SpriteComponent*>	sprites;
 
 /*******************************************************************************
  * 					CONSTRUCTOR AND DESTRUCTOR								   *
@@ -36,6 +37,7 @@ class Game
 		void runLoop();
 		void shutdown();
 		void addActor(class Actor* actor);
+		void addSprite(class SpriteComponent* sprite);
 		void removeActor(class Actor* actor);
 
 
