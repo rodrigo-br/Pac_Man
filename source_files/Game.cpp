@@ -1,5 +1,38 @@
 #include "../header_files/Game.hpp"
 
+SDL_Texture* Game::loadTexture(const char *fileName)
+{
+	SDL_Surface* surface = IMG_Load(fileName);
+	if (!surface)
+	{
+		SDL_Log("Failed to load texture file %s", fileName);
+		return nullptr;
+	}
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(this->renderer, surface);
+	SDL_FreeSurface(surface);
+	if (!texture)
+	{
+		SDL_Log("Failed to convert surface to texture for %s", fileName);
+		return nullptr;
+	}
+	return texture;
+}
+
+void Game::loadData()
+{
+	// ...
+}
+
+bool Game::initialize()
+{
+	IMG_Init(IMG_INIT_PNG);
+	loadTexture("assets/capybara.png");
+
+	loadData();
+
+	return true;
+}
+
 float Game::updateDeltaTime()
 {
 	while (!SDL_TICKS_PASSED(SDL_GetTicks(), this->ticksCount + 16))

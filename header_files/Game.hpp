@@ -2,6 +2,7 @@
 # define GAME_HPP
 
 # include <SDL2/SDL.h>
+# include <SDL2/SDL_image.h>
 # include <vector>
 # include <utility>
 # include "defines.hpp"
@@ -42,10 +43,12 @@ class Game
  * 					PRIVATE MEMBER FUNCTIONS								   *
  ******************************************************************************/
 	private:
-		void		processInput();
-		void		updateGame();
-		void		generateOutput();
-		float		updateDeltaTime();
+		void			processInput();
+		void			updateGame();
+		void			generateOutput();
+		float			updateDeltaTime();
+		SDL_Texture*	loadTexture(const char *fileName);
+		void			loadData();
 };
 
 
