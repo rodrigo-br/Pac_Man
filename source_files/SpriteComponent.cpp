@@ -6,7 +6,7 @@ void SpriteComponent::setTexture(SDL_Texture* texture)
 	SDL_QueryTexture(	texture, nullptr, nullptr,
 						&this->_texWidth,
 						&this->_texHeight);
-}
+};
 
 void SpriteComponent::draw(SDL_Renderer* renderer)
 {
@@ -27,5 +27,5 @@ void SpriteComponent::draw(SDL_Renderer* renderer)
 						nullptr,
 						SDL_FLIP_NONE
 						);
-	
-}
+
+};
